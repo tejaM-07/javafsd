@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 class Student {
@@ -12,22 +11,22 @@ class Student {
     }
 }
 
-public class FilterMapCollectExample {
+class Combine {
     public static void main(String[] args) {
 
         List<Student> students = Arrays.asList(
-                new Student("Sai", 75),
-                new Student("Ravi", 55),
-                new Student("Kiran", 85),
-                new Student("Rahul", 45)
+                new Student("Rahul", 75),
+                new Student("Anu", 58),
+                new Student("Kiran", 90),
+                new Student("Sneha", 65),
+                new Student("Ravi", 45)
         );
 
-        List<String> result = students.stream()
+        List<String> names = students.stream()
                 .filter(s -> s.marks > 60)
                 .map(s -> s.name)
                 .collect(Collectors.toList());
 
-        System.out.println("Students with marks above 60:");
-        System.out.println(result);
+        System.out.println(names);
     }
 }

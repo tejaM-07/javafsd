@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class HashMapExample {
+public class hashmap {
 
     public static void main(String[] args) {
 
@@ -13,7 +13,7 @@ public class HashMapExample {
         System.out.println("Enter a sentence:");
         String input = sc.nextLine();
 
-        String[] words = input.split("\\s+");
+        String[] words = input.split(" ");
 
         for (String word : words) {
 
@@ -22,6 +22,7 @@ public class HashMapExample {
             } else {
                 wordCount.put(word, 1);
             }
+
         }
 
         System.out.println("\nWord Frequencies:");

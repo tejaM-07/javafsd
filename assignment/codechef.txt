@@ -1,0 +1,4 @@
+DAY1(15-07-26).https://www.codechef.com/practice/course/java/LPJAAS01/problems/LJAAS10
+day2(16-07-26).https://www.codechef.com/practice/course/java/LPJAAS01/problems/LJAAS10
+day3 (17-07-26):https://www.codechef.com/practice/course/java/LPJAAS03/problems/LJAAS30?tab=Help
+Day 4(17-07-26):https://www.codechef.com/practice/course/java/LPJAAS04/problems/LJAAS40?tab=Help

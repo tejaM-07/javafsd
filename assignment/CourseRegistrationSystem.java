@@ -2,19 +2,19 @@ import java.util.ArrayList;
 
 class Course {
 
-    // Encapsulation
+    
     private String courseCode;
     private String courseName;
     private int courseCredits;
 
-    // Constructor
+    
     public Course(String courseCode, String courseName, int courseCredits) {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.courseCredits = courseCredits;
     }
 
-    // Getters
+    
     public String getCourseCode() {
         return courseCode;
     }
@@ -27,7 +27,7 @@ class Course {
         return courseCredits;
     }
 
-    // Setters
+    
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
@@ -36,8 +36,9 @@ class Course {
         this.courseCredits = courseCredits;
     }
 
-    // Display Course Details
+    
     public void displayCourse() {
+
         System.out.println("----------------------------");
         System.out.println("Course Code    : " + courseCode);
         System.out.println("Course Name    : " + courseName);
@@ -45,25 +46,39 @@ class Course {
     }
 }
 
+
 public class CourseRegistrationSystem {
 
-    // ArrayList to store courses
+    
     private ArrayList<Course> courses = new ArrayList<>();
 
-    // Add Course
+
+    
     public void addCourse(Course course) {
+
+        for (Course c : courses) {
+
+            if (c.getCourseCode().equalsIgnoreCase(course.getCourseCode())) {
+
+                System.out.println("Course already exists.");
+                return;
+            }
+        }
+
         courses.add(course);
         System.out.println(course.getCourseName() + " added successfully.");
     }
 
-    // Remove Course
+
+    
     public void removeCourse(String courseCode) {
 
         for (int i = 0; i < courses.size(); i++) {
 
             if (courses.get(i).getCourseCode().equalsIgnoreCase(courseCode)) {
 
-                System.out.println(courses.get(i).getCourseName() + " removed successfully.");
+                System.out.println(courses.get(i).getCourseName()
+                        + " removed successfully.");
 
                 courses.remove(i);
                 return;
@@ -73,7 +88,8 @@ public class CourseRegistrationSystem {
         System.out.println("Course not found.");
     }
 
-    // Find Course
+
+    
     public void findCourse(String courseCode) {
 
         for (Course c : courses) {
@@ -89,71 +105,131 @@ public class CourseRegistrationSystem {
         System.out.println("Course not found.");
     }
 
-    // Show All Courses
+
+    
+    public void updateCourse(String courseCode, String newName, int newCredits) {
+
+        for (Course c : courses) {
+
+            if (c.getCourseCode().equalsIgnoreCase(courseCode)) {
+
+                c.setCourseName(newName);
+                c.setCourseCredits(newCredits);
+
+                System.out.println("Course updated successfully.");
+                return;
+            }
+        }
+
+        System.out.println("Course not found.");
+    }
+
+
+    
     public void showCourses() {
 
         System.out.println("\n===== Registered Courses =====");
 
         if (courses.isEmpty()) {
+
             System.out.println("No courses registered.");
             return;
         }
 
+
         for (Course c : courses) {
+
             c.displayCourse();
         }
     }
 
-    // Calculate Total Credits
+
+    
     public void calculateTotalCredits() {
 
         int totalCredits = 0;
 
+
         for (Course c : courses) {
+
             totalCredits += c.getCourseCredits();
         }
+
 
         System.out.println("\nTotal Credits = " + totalCredits);
     }
 
-    // Main Method
+
+
+    
     public static void main(String[] args) {
+
 
         CourseRegistrationSystem system = new CourseRegistrationSystem();
 
-        // Creating Course Objects
+
+        
         Course c1 = new Course("CS101", "Java Programming", 4);
         Course c2 = new Course("CS102", "Python Programming", 3);
         Course c3 = new Course("CS103", "Database Management", 4);
         Course c4 = new Course("CS104", "Web Development", 3);
 
-        // Add Courses
+
+        // Adding Courses
         system.addCourse(c1);
         system.addCourse(c2);
         system.addCourse(c3);
 
-        // Show Courses
+
+        // Display Courses
         system.showCourses();
+
 
         // Add New Course
-        System.out.println("\nAdding a New Course...");
+        System.out.println("\nAdding New Course...");
         system.addCourse(c4);
 
-        // Show Courses Again
+
+        // Display Again
         system.showCourses();
 
-        // Find Course
-        System.out.println("\nSearching for Course CS102");
+
+
+        // Search Course
+        System.out.println("\nSearching Course CS102");
         system.findCourse("CS102");
+
+
+
+        // Update Course
+        System.out.println("\nUpdating Course CS103");
+
+        system.updateCourse(
+                "CS103",
+                "Advanced Database Management",
+                5
+        );
+
+
+
+        // Display Updated List
+        system.showCourses();
+
+
 
         // Remove Course
         System.out.println("\nRemoving Course CS101");
+
         system.removeCourse("CS101");
 
-        // Show Remaining Courses
+
+
+        // Display Remaining Courses
         system.showCourses();
 
-        // Calculate Total Credits
+
+
+        // Total Credits
         system.calculateTotalCredits();
     }
 }
